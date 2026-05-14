@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY WEBSITE - JACLYN</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        body {margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(rgba(255, 245, 245, 0.85), rgba(255, 245, 245, 0.85)), url('img/PUAKUMBU.jpg'); 
+            background-size: cover; background-position: center; background-attachment: fixed; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;}
+
+        nav {background-color: rgba(255, 255, 255, 0.95); padding: 15px; text-align: center; box-shadow: 0 2px 15px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; border-bottom: 3px solid #800000;}
+
+        .btn-nav {display: inline-block; background-color: white; color: #222; padding: 8px 18px; margin: 5px; text-decoration: none; border-radius: 30px; font-weight: bold; font-size: 0.85rem; border: 1px solid #ddd; transition: 0.3s; text-transform: uppercase; cursor: pointer;}
+
+        .btn-nav:hover, .btn-nav.active-nav { background-color: #800000; color: white; border-color: #800000;}
+
+        .main-wrapper { flex: 1; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
+        
+        .content-section {display: none; width: 100%; max-width: 900px; background: rgba(255, 255, 255, 0.9); padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);backdrop-filter: blur(5px); animation: fadeIn 0.5s ease-in-out;}
+
+        .section-active { display: block; }
+
+        @keyframes fadeIn {from {opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0);}}
+
+        /* ACHIEVEMENT TABLE */
+        .school-table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white;border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);}
+        .school-table th {background-color: #800000; color: white; padding: 15px; text-align: left; font-size: 0.9rem;}
+        .school-table td {padding: 15px; border-bottom: 1px solid #eee; font-size: 0.9rem; color: #444;}
+        .school-table tr:hover {background-color: #fff5f5;}
+
+        .profile-img {width: 180px; height: 180px; border-radius: 50%; border: 5px solid #800000; object-fit: cover; margin-bottom: 20px;}
+        .gallery {display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;}
+        .gallery img {width: 100%; height: 200px; object-fit: cover; border-radius: 10px; border: 3px solid white; transition: 0.3s; }
+        .gallery img:hover {transform: scale(1.05); border-color: #800000;}
+        
+        .music-bar {position: fixed; bottom: 0; width: 100%; background: rgba(128, 0, 0, 0.95); color: white; padding: 10px; display: flex; justify-content: center; align-items: center; gap: 15px; z-index: 2000;}
+        .play-btn { background: white; color: #800000; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1rem; font-weight: bold; }
+
+        .form-group { margin-bottom: 15px; text-align: left; }
+        input, textarea { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-top: 5px; box-sizing: border-box; }
+        .btn-submit { background: #800000; color: white; border: none; padding: 12px 30px; border-radius: 25px; cursor: pointer; width: 100%; font-weight: bold; }
+
+/* POP OUT GALLERY STYLE */
+	.modal-pop {display: none;  position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); padding-top: 50px; overflow: hidden;}
+
+	.modal-content {margin: auto; display: block; width: auto; max-width: 90%; max-height: 70vh; border-radius: 15px; border: 5px solid white; object-fit: contain;}
+
+	#caption {margin: auto; display: block; width: 80%; text-align: center; color: white; padding: 15px 0; font-size: 1.5rem; font-weight: bold;}
+
+	.close-btn {position: absolute; top: 20px; right: 35px; color: white; font-size: 60px; font-weight: bold; cursor: pointer; transition: 0.3s;}
+
+	.close-btn:hover { color: #800000; }
+	</style>
+
+</head>
+<body onload="startTime()">
+
+    <nav>
+        <button class="btn-nav active-nav" id="nav-home" onclick="showSection('home')">Home</button>
+        <button class="btn-nav" id="nav-about" onclick="showSection('about')">About Me</button>
+        <button class="btn-nav" id="nav-interest" onclick="showSection('interest')">My Interest</button>
+        <button class="btn-nav" id="nav-achievement" onclick="showSection('achievement')">Achievement</button>
+        <button class="btn-nav" id="nav-contact" onclick="showSection('contact')">Contact</button>
+    </nav>
+
+    <div class="main-wrapper">
+
+        <div id="home" class="content-section section-active" style="text-align: center;">
+            <div id="txt" style="font-family: 'Courier New'; font-size: 1.5rem; font-weight: bold; color: #800000; margin-bottom: 20px;"></div>
+            <img src="img/JAC.jpg" alt="Jaclyn" class="profile-img">
+            <h1 style="color: #800000;">Welcome to My Website</h1>
+            <p style="font-style: italic; font-weight: bold;">"Agi Idup Agi Ngelaban"</p>
+        </div>
+
+        <div id="about" class="content-section">
+            <h1 style="border-bottom: 2px solid #800000; padding-bottom: 10px;">About Me</h1>
+            <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+                <img src="img/LYN.jpg" style="width: 150px; border-radius: 15px; border: 4px solid #800000;">
+                <p style="flex: 1; min-width: 250px;">Haiii! My name is <b>Jaclyn Anak Laurence</b>. You can call me Jac. I am a student at <b>UiTM</b> from <b>Taiping, Perak</b>. My hometown at Sibu, Sarawak. People always mistaken me as Sabahan hehe.</p>
+            </div>
+            <h3>My Hobbies:</h3>
+            <ul>
+                <li>Listening to music</li>
+                <li>Playing badminton</li>
+                <li>Hiking Bukit Larut, Taiping, Perak</li>
+            </ul>
+        </div>
+
+        <div id="interest" class="content-section">
+            <h1 style="text-align: center; color: #800000;">My Interest: UiTM Cats 🐾</h1>
+            <div style="background: black; padding: 10px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
+                <video controls style="width: 100%; max-width: 400px; max-height: 500px; border-radius: 5px;">
+	<source src="img/MAYAU.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="gallery">
+	<img src="img/SI CANTEK.jpg" alt="This is Cantek. She is my first cat that approach me when I become UiTM student." onclick="openPop(this)">
+	<img src="img/NUGGET.jpg" alt="Second cat I met. I named him as Nugget because of his color hehe." onclick="openPop(this)">
+	<img src="img/BELANG.jpg" alt="This is random cat that I met in academic building so I call him Belang." onclick="openPop(this)">
+	<img src="img/UTEH.jpg" alt="This is Uteh. he is naughty but unique cat. One of his eye is yelow and the other is blue color." onclick="openPop(this)">
+	<img src="img/GEBU.jpg" alt="This is Gebu. She is really fluffy and love to sleep." onclick="openPop(this)">
+	<img src="img/YUMI.jpg" alt="Yumi is my second cat that approach me. She's really tiny and I take care of her when im smester 1. After 1 month she'sS died because other cat bite her." onclick="openPop(this)">
+	<img src="img/MIRULL.jpg" alt="Najwa calls him Mirul. He is a shy and timid cat, but after being comforted many times, he becomes very affectionate and clingy. " onclick="openPop(this)">
+	<img src="img/SHAI.jpg" alt="This is Shai. I met him in Icip Icip Foodcourt. He very shy. Look at his face." onclick="openPop(this)">
+	<img src="img/SAWAI.jpg" alt="Sawai is very affectionate and naughty cat. He loves getting attention and always causes litte chaos around the room. Btw Sawai means 'crazy' in Iban" onclick="openPop(this)">
+	<img src="img/AHYEN.jpg" alt="This is random cat I met too. When I go to outside to clear my mind, I met him. I name his as Ahyen. " onclick="openPop(this)">
+	<img src="img/OREO.jpg" alt="This Oreo. Third cat I adopted in Masria 3. Very clingy." onclick="openPop(this)">
+	<img src="img/MANJA.jpg" alt="Another orange cat I met in Masria 3. He's really coward but love to play with Uteh and Sawai." onclick="openPop(this)">
+
+            </div>
+        </div>
+
+        <div id="achievement" class="content-section">
+            <h1 style="text-align: center; color: #800000;">Education Journey</h1>
+            <table class="school-table">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>School/Institution</th>
+                        <th>Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2013 - 2017</td>
+                        <td>Sekolah Rendah Seri Aman</td>
+                        <td>UPSR (2B 3C 1D 1F)</td>
+                    </tr>
+                    <tr>
+                       <td>2018 - 2022</td>
+                        <td>Sekolah Menengah Sri Kota</td>
+                        <td>SPM (2A+1B+1B-1C+1D)</td>
+                    </tr>
+                    <tr>
+                        <td>July 2023 - January 2025</td>
+                        <td>Sekolah Menengah Doktor Burhanuddin</td>
+                        <td>STPM (PGNK: 3.25)</td>
+                    </tr>
+		<tr>
+                        <td>September 2025 - Present</td>
+                        <td>University Technology Mara (MARA)</td>
+                        <td>Degree</td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <div style="margin-top: 25px; background: white; padding: 20px; border-radius: 15px; border-left: 8px solid #800000;">
+                <h3>Web Project</h3>
+                <p>Designed a personal website for <b>IML470</b>.</p>
+            </div>
+        </div>
+
+        <div id="contact" class="content-section">
+            <h1 style="text-align: center; color: #800000;">Let's Connect</h1>
+            
+            <div class="form-group">
+                <label>Your Email</label>
+                <input type="text" id="name" placeholder="example: 2025480266@student.uitm.edu.my">
+            </div>
+            
+            <div class="form-group">
+                <label>Message</label>
+                <textarea id="message" placeholder="What's on your mind?"></textarea>
+            </div>
+            
+            <button class="btn-submit" onclick="alert('Thank you for submitting!')">Send Message</button>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <p style="color: #444; font-weight: bold;">Find me on:</p>
+                <div style="font-size: 2.5rem; display: flex; justify-content: center; gap: 30px;">
+                    <a href="https://www.instagram.com" target="_blank" style="color: #E1306C;">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    
+                    <a href="https://www.tiktok.com" target="_blank" style="color: #000000;">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    <div class="music-bar">
+        <span style="font-size: 0.8rem; font-weight: bold;">BORNEO VIBES 🎵</span>
+        <audio id="myAudio" loop>
+            <source src="img/BORNEO.mp3" type="audio/mpeg">
+        </audio>
+        <button class="play-btn" onclick="togglePlay()" id="pBtn">▶</button>
+    </div>
+
+    <script>
+        function showSection(sectionId) {var sections = document.querySelectorAll('.content-section'); sections.forEach(s => s.classList.remove('section-active')); var buttons = document.querySelectorAll('.btn-nav'); buttons.forEach(b => b.classList.remove('active-nav')); document.getElementById(sectionId).classList.add('section-active'); document.getElementById('nav-' + sectionId).classList.add('active-nav');}
+            
+	var audio = document.getElementById("myAudio");
+        var btn = document.getElementById("pBtn");
+        function togglePlay() {if (audio.paused) { audio.play(); btn.innerHTML = "⏸"; } 
+            else { audio.pause(); btn.innerHTML = "▶"; }}
+
+        function startTime() {const today = new Date();
+            let h = today.getHours(); let m = today.getMinutes(); let s = today.getSeconds(); m = (m < 10) ? "0" + m : m; s = (s < 10) ? "0" + s : s;
+            document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+            setTimeout(startTime, 1000);}
+            
+	function openPop(imgElement) {var modal = document.getElementById("myModal");var modalImg = document.getElementById("imgPop"); var captionText = document.getElementById("caption"); modal.style.display = "block"; modalImg.src = imgElement.src; captionText.innerHTML = imgElement.alt; }
+
+	function closeModal() {document.getElementById("myModal").style.display = "none";}
+    
+	window.onclick = function(event) {
+    var modal = document.getElementById("myModal");
+    if (event.target == modal) {
+        modal.style.display = "none";}}
+    </script>
+	
+<div id="myModal" class="modal-pop">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="imgPop">
+    <div id="caption"></div>
+</div>
+
+</body>
+</html>
